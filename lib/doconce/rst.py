@@ -411,7 +411,7 @@ def rst_ref_and_label(section_label2title, format, filestr):
 
     return filestr
 
-def rst_bib(filestr, citations, pubfile, pubdata, numbering=True):
+def rst_bib(filestr, citations, pubfile, pubdata, numbering=False):
     """
     Replace doconce citations and bibliography with reST syntax.
     If numbering is True, the keys used in the bibliography are
@@ -443,7 +443,7 @@ def rst_bib(filestr, citations, pubfile, pubdata, numbering=True):
                 except UnicodeDecodeError as e:
                     if "can't decode byte" in str(e):
                         try:
-                            bibtext = bibtext.replace('[%s]' % label, 
+                            bibtext = bibtext.replace('[%s]' % label,
                                                       cite % citations[label])
                         except UnicodeDecodeError as e:
                             errwarn('UnicodeDecodeError: ' + e)
